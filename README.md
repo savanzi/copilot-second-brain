@@ -129,5 +129,10 @@ whatever you like.
 
 **No user data lives here.** Configuration, state and journals live on each user's own
 OneDrive and have no route into this repository. If you find anything here that looks like
-someone's client data, that is a defect — please open an issue rather than working around
-it.
+someone's client data, that is a defect — please open an issue saying *where*, without
+quoting what you found.
+
+That last part is the general rule: **issues and pull requests are part of this repository**
+and share its visibility, so a bug report carries structure — file shapes, provenance tags,
+counts, header lines — and never real content. If something has to be seen in the original
+to be understood, send it to the maintainer privately instead of attaching it here.
