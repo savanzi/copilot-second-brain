@@ -9,7 +9,10 @@ Microsoft 365 Copilot: **Cowork** maintains it, a declarative Copilot **agent** 
 questions from it, and it lives as plain markdown files on your own OneDrive. It requires
 nothing outside M365 — no local tooling, no third-party services, nothing to install. Every
 user runs their own instance, on their own clients, set up once through a guided interview:
-no client name, agency name or person is hardcoded anywhere in this kit.
+no client name, agency name or person is hardcoded anywhere in this kit. "Client" is simply
+the word the kit uses for whatever you organise around — the interview asks whether that's a
+client, an internal project or a person you support, and a single email address identifies an
+entry just as well as a company domain does.
 
 ## What it gives you
 

@@ -1,4 +1,4 @@
-Version: 1.6 (2026-08-19) — edit in the copilot-second-brain repo first, then paste here.
+Version: 1.7 (2026-08-25) — edit in the copilot-second-brain repo first, then paste here.
 
 # Capture task — Copilot Second Brain
 
@@ -63,6 +63,11 @@ window from Step 2.
 
 **Inclusion criterion (verbatim, apply exactly):** an item is in scope for a client if a
 **counterpart domain** from that client's config appears in the from/to/cc of the item.
+An entry in `Counterpart domains` may be a whole domain (`acme.com`) **or one full email
+address** (`m.rossi@acme.com`) — a brain organised around people rather than companies uses
+the second form, because a whole internal domain would match everything while one address
+matches exactly that person. Match both the same way: the entry appears, verbatim, in the
+item's from/to/cc.
 In addition, that client's `Third parties` and `Keywords` classify items that don't carry
 the counterpart domain — vendor items (via `Third parties`) and agency-internal threads
 about that client (via `Keywords`). Never use a person's name alone to attribute an item to a
@@ -150,13 +155,41 @@ is disposable and rebuilt every run). Structure, exactly:
    the top of this document:
    ```
    # Pending — YYYY-MM-DD HH:MM
-   Capture prompt version: 1.6 (2026-08-19)
+   Capture prompt version: 1.7 (2026-08-25)
    ```
    If Step 2 hit the missing-watermark branch, add one more line directly below the version
    line, present only in that case:
    ```
    Note: watermark missing — window defaulted to last 24 hours.
    ```
+   Then, directly below (and below that note if it is present), a **validation-staleness
+   banner** — written only when it fires. It answers the one question the coverage table
+   cannot: the table says how much is waiting, the banner says how long it has been waiting
+   and whether anybody is still walking it.
+
+   It needs two numbers, both of which point 4 below already computes — so **locate every
+   client's last `ritual` marker before you write this header**, not after:
+   - **Days since the last validation session** = today minus the date of the most recent
+     `· ritual ·` line found in *any* client's journal. Only the validation session writes
+     that line, so it is the one honest record of when a human last walked this brain.
+     Never take this from a STATE file's `Last validated:` — the quick "Update my brain"
+     flow stamps that too, and a single-fact update would read as a full session.
+   - **How many clients are carrying unvalidated facts** = how many rows have an
+     `Awaiting validation` count greater than zero.
+
+   Write the banner when that day count is **3 or more** and at least one client is carrying
+   unvalidated facts:
+   ```
+   ⚠ No validation session in 5 days — 3 clients are carrying unvalidated facts. Say "Validate my brain" to walk them.
+   ```
+   When no journal anywhere holds a `ritual` line and at least one client is carrying
+   unvalidated facts, this brain has never been validated at all — say exactly that instead:
+   ```
+   ⚠ No validation session yet — 3 clients are carrying unvalidated facts. Say "Validate my brain" to walk them.
+   ```
+   Below 3 days, or with nothing awaiting validation anywhere, write no banner at all. A
+   warning that appears every single day stops being read, which is the exact failure it
+   exists to prevent.
 2. A coverage table listing **every client enumerated in Step 1, in the same order, zeros
    included** — a client with no captured items this run still gets a row with `0`. A
    missing client row is a bug; there is no such thing as a client silently absent from

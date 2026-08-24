@@ -1,4 +1,4 @@
-Version: 1.5 (2026-08-19) — edit in the copilot-second-brain repo first, then paste here.
+Version: 1.6 (2026-08-25) — edit in the copilot-second-brain repo first, then paste here.
 
 # Onboarding interview — Copilot Second Brain
 
@@ -49,14 +49,32 @@ Acknowledge each answer briefly before asking the next question.
 
 ## Step 2 — Add clients, one at a time
 
-Tell the user you'll now set up their clients, one at a time, and that they can add more
-later by re-running this same prompt.
+**Ask one framing question first.** It changes nothing in the files and everything in how
+the rest of this conversation reads:
 
-For **each** client, ask these seven questions, one at a time, in this order:
+> "Do you organise your work by client, or by project — or by person, if the people you
+> support *are* your work?"
 
-1. "What's the client's name?"
-2. "What are their counterpart domains?" (the email domain(s) that identify messages from
-   this client — e.g. `acme.com`; more than one is fine)
+Their answer becomes the word you use for the rest of the interview: say "project" to
+someone who runs internal projects, "person" to someone whose work is the people they
+support, "client" to someone with clients. The config file's field stays `## Client:` in
+every case — that is a schema name, not a claim about the user's work, and nothing
+downstream depends on which word you spoke. Never argue their answer back to "client".
+
+Then tell the user you'll set these up one at a time, and that they can add more later by
+re-running this same prompt.
+
+For **each** one, ask these seven questions, one at a time, in this order:
+
+1. "What's its name?" — the client, project or person, in their word from the framing
+   question.
+2. "What are their counterpart domains?" (the email domain(s) that identify messages about
+   this one — e.g. `acme.com`; more than one is fine). **A full email address is a valid
+   answer here**, and it is the right one when the entry is a single person — above all a
+   person inside the user's own organisation, where a whole domain would match everything
+   and one address matches exactly them. Offer it if the user hesitates, and always if they
+   answered "person" to the framing question: "for a person, give me their address rather
+   than a domain — `m.rossi@acme.com`."
 3. "Any third parties for this client?" (vendors, tools or partners whose messages should
    also count, even though they don't carry the client's own domain — "none" is a fine
    answer)
@@ -107,7 +125,7 @@ Step 3.
 ## Step 3 — Create the folders and write `brain-config.md`
 
 **Whether this is a first run or a re-run**, make sure both folders exist now — create
-whichever one is missing: `Documents/Cowork/Second Brain/` and `Documents/Cowork/Project
+whichever one is missing: `Documents/Cowork/Second Brain/` and `Documents/Cowork/Second
 Brain Archive/`. Then, on a first run, write `brain-config.md` inside `Second Brain/` from
 the template below, filled with everything gathered in Steps 1–2.
 
