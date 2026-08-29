@@ -1,11 +1,11 @@
 ---
 
 name: update-my-brain
-description: Record one or more facts the user just observed — a verbal conversation, a Slack message, a hallway decision, anything no capture sweep can see — straight into the Copilot Second Brain: journal line with [user] provenance, STATE updated under the user's confirmation, no waiting for the next validation session. Use whenever the user says "update my brain", "record this", "the brain is out of date", "correct the brain", or states a fact and asks to save it to the brain.
+description: Record one or more facts the user just observed — a verbal conversation, a Slack message, a hallway decision, anything no capture sweep can see — straight into the Copilot Second Brain: journal line with [user] provenance, STATE updated under the user's confirmation, no waiting for the next validation session. Use ONLY when the user's request names the brain explicitly — "update my brain", "record this in my brain", "my brain is out of date", "correct my brain", "save this to my brain". A request that does not name the brain is never this skill, however close it sounds: other note-taking, journalling or capture skills may be installed alongside this one, and the word "brain" is the only thing that tells them apart.
 
 ---
 
-Version: 1.1 (2026-08-19) — edit in the copilot-second-brain repo first, then copy here.
+Version: 1.2 (2026-08-25) — edit in the copilot-second-brain repo first, then copy here.
 
 # Quick update — Copilot Second Brain
 

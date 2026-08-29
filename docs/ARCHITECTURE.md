@@ -22,7 +22,7 @@ Each of these was paid for during a month of running an earlier, hand-built vers
 3. **Humans validate judgment, agents capture facts.** Raw facts flow in autonomously, tagged `[captured, unvalidated]`. Judgment — status changes, decisions, summaries — reaches the curated layer only through the validation session. (Two-level hybrid model, §7.)
 4. **Absence must not look like success.** Coverage is declared with zeros, per client, dated. Staleness is detected by the reader, not trusted to the writer. Blind spots are written down, never deduced from silence.
 5. **Wrong presence is worse than absence.** Client attribution uses the counterpart's **email domain**, never lists of people (colleagues appear on several clients; a person's name classifies nothing).
-6. **Machine and data never share a path.** The repository holds only prompts, docs and the deck. Configuration, state and journals live on the user's OneDrive and have no route into the repo. This is enforced by construction, not by exclusion lists.
+6. **Machine and data never share a path.** The repository holds only prompts, docs and the deck. Configuration, state and journals live on the user's OneDrive and have no route into the repo. This is enforced by construction, not by exclusion lists. **Issues and pull requests count as the repository**: they share its visibility, and a private repo made public carries its whole issue history — attachments included — along with it. So a bug report describes *structure* and never content: file shapes, provenance tags, counts, header lines, with real facts, names and addresses left out. Whatever a maintainer must see in the original goes to them out of band. A pilot user debugging their own brain is exactly the moment this rule gets tested, because the fastest thing to do is paste the file.
 7. **Everything is English.** File names, structure, prompts, docs, deck, brain content. This binds every surface that writes: capture translates the Italian email it just read, the two sessions translate what the user says to them, and the conversation's own language changes nothing about the file. Only the query agent's *answers* follow the user's language — what it reads stays English. Proper nouns, product names and quoted subjects are the one exception, kept verbatim: a translated subject line no longer finds the original.
 
 ## 3. Layout
@@ -69,7 +69,7 @@ Task system: none        ← reserved; see §8
 
 ## Client: <Name>
 - Key: <slug>                          ← used in file names
-- Counterpart domains: <domain.com>    ← inclusion criterion (domains, never people)
+- Counterpart domains: <domain.com>    ← inclusion criterion (a domain, or one full address; never a name)
 - Keywords: <…>                        ← classify agency-internal threads about this client
 - Streams: <name (aliases); …>         ← the client's workstreams, with the other names each goes by
 - Third parties: <vendor, tool, …>     ← senders that don't carry the client domain
@@ -95,8 +95,8 @@ Runs weekdays at the configured time. Steps:
 3. **Append** one line per relevant fact to the client's journal:
    `- 2026-08-13 · email-in · Acme asks to move the SOW review call to Aug 20 — source: mail "SOW review reschedule" from j.smith@acme.com, 2026-08-13 · [captured, unvalidated]`
    Event types: `email-in`, `email-out`, `meeting`, `decision`, `delivery`, `revision`, `blocker`, `unblock`, `note`. Relevance threshold: *"will I need to know this happened, two weeks from now?"* Source metadata must be enough to re-find the original (sender, subject/title, date). Never touch existing lines.
-4. Rewrite `PENDING.md`: proposed STATE changes derived from the day's facts (status change, new decision, new waiting-on, new stakeholder), each referencing the journal lines that justify it.
-5. Declare coverage at the top of `PENDING.md`: dated table *client × items captured × awaiting validation*, **clients enumerated from the config, zeros included**, plus a line naming how far each source is covered and what an unavailable source left uncovered. The second column counts the agent-written journal lines below each client's last `ritual` marker: capture found nothing new is a different statement from there is nothing to walk.
+4. Rewrite `PENDING.md`: proposed STATE changes (status change, new decision, new waiting-on, new stakeholder), each referencing the journal lines that justify it. **Derived from every agent-written journal line below that client's last `ritual` marker — never from this run's own facts alone.** That is what lets a proposal survive the daily rebuild: a run that finds nothing new still re-proposes the whole unwalked backlog, and only a human walking it empties the section (§5.2).
+5. Declare coverage at the top of `PENDING.md`: dated table *client × items captured × awaiting validation*, **clients enumerated from the config, zeros included**, plus a line naming how far each source is covered and what an unavailable source left uncovered. The second column counts the agent-written journal lines below each client's last `ritual` marker: capture found nothing new is a different statement from there is nothing to walk. Above the table, when the most recent `ritual` line anywhere is 3+ days old and at least one client is carrying unvalidated facts, a one-line **validation-staleness banner** says how long nobody has walked the brain and how many clients that leaves stale — the table says how much is waiting, the banner says how long it has been waiting.
 6. Update `_watermark.json` — **advancing only the sources actually read**.
 
 ### 5.2 Validation — interactive Cowork session (`skills/validate-my-brain/SKILL.md`, a Cowork skill)
@@ -120,7 +120,7 @@ One agent per user, created in agent builder, knowledge source = the user's `Sec
 5. **An open chat is an undeclared snapshot.** The agent states the as-of date of what it read; after a brain update, start a new chat (also written in the brain's `README.md`).
 6. **Reply in the user's language.** Brain content is English; answers follow the question's language.
 7. **Never write.** Correction requests are redirected to the validation session in Cowork.
-8. **Declare staleness.** If the latest coverage table is older than 2 working days, say so in every answer ("capture may have stopped").
+8. **Declare staleness, on both clocks.** If the latest coverage table is older than 2 working days, say so in every answer ("capture may have stopped"). Separately, repeat `PENDING.md`'s validation-staleness banner if present, and give a client's `Last validated` date whenever it is more than 5 days old — capture running is not the same as anyone having checked what it captured.
 
 ### 5.4 Onboarding — guided interview (`prompts/onboarding-interview.md`)
 

@@ -1,11 +1,11 @@
 ---
 
 name: validate-my-brain
-description: Run the Copilot Second Brain validation session — walk today's pending proposals one at a time, apply the confirmed ones to the STATE files, fix wrong journal lines, collect what no agent can see, and stamp the brain as validated. Use whenever the user says "validate my brain", "brain validation", "validation session", "review pending", "let's validate", or asks to process the brain's pending proposals.
+description: Run the Copilot Second Brain validation session — walk today's pending proposals one at a time, apply the confirmed ones to the STATE files, fix wrong journal lines, collect what no agent can see, and stamp the brain as validated. Use ONLY when the user's request names the brain explicitly — "validate my brain", "brain validation", "review my brain's pending proposals", "let's validate the brain". A request that does not name the brain is never this skill, however close it sounds: other review, triage or inbox-processing skills may be installed alongside this one, and the word "brain" is the only thing that tells them apart.
 
 ---
 
-Version: 1.6 (2026-08-19) — edit in the copilot-second-brain repo first, then copy here.
+Version: 1.7 (2026-08-25) — edit in the copilot-second-brain repo first, then copy here.
 
 # Validation session — Copilot Second Brain
 

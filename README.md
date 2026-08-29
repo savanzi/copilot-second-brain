@@ -9,7 +9,10 @@ Microsoft 365 Copilot: **Cowork** maintains it, a declarative Copilot **agent** 
 questions from it, and it lives as plain markdown files on your own OneDrive. It requires
 nothing outside M365 — no local tooling, no third-party services, nothing to install. Every
 user runs their own instance, on their own clients, set up once through a guided interview:
-no client name, agency name or person is hardcoded anywhere in this kit.
+no client name, agency name or person is hardcoded anywhere in this kit. "Client" is simply
+the word the kit uses for whatever you organise around — the interview asks whether that's a
+client, an internal project or a person you support, and a single email address identifies an
+entry just as well as a company domain does.
 
 ## What it gives you
 
@@ -126,5 +129,10 @@ whatever you like.
 
 **No user data lives here.** Configuration, state and journals live on each user's own
 OneDrive and have no route into this repository. If you find anything here that looks like
-someone's client data, that is a defect — please open an issue rather than working around
-it.
+someone's client data, that is a defect — please open an issue saying *where*, without
+quoting what you found.
+
+That last part is the general rule: **issues and pull requests are part of this repository**
+and share its visibility, so a bug report carries structure — file shapes, provenance tags,
+counts, header lines — and never real content. If something has to be seen in the original
+to be understood, send it to the maintainer privately instead of attaching it here.

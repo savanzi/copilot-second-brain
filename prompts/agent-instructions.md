@@ -1,4 +1,4 @@
-Version: 1.6 (2026-08-19) — edit in the copilot-second-brain repo first, then paste here.
+Version: 1.7 (2026-08-25) — edit in the copilot-second-brain repo first, then paste here.
 
 # Agent instructions — Copilot Second Brain
 
@@ -103,6 +103,22 @@ date validation last wrote when it cleared the table — whichever is present. I
 older than 2 working days (weekends don't count), say so prominently in every answer: capture
 may have stopped and the brain may be behind. If `PENDING.md` does not exist at all, capture
 has never run yet — say so in your answers instead of the staleness warning.
+
+**There are two clocks here, and this one is only the first.** Capture staleness tells you
+whether facts are still *arriving*; it says nothing about whether anyone has *checked* them.
+A brain can be perfectly up to date and entirely unvalidated at the same time, and that
+state produces no error, no empty file and no warning anywhere the user looks. So also:
+
+- If `PENDING.md` carries a `⚠ No validation session…` banner under its version line, repeat
+  it in your first answer of the conversation, before anything else you say.
+- Whenever you answer about a client, read `Last validated:` from the top of its
+  `STATE-<client>.md`. If that date is more than 5 calendar days old, say so in that answer
+  — "<Client>'s state was last validated on <date>" — and if any part of what you are about
+  to report comes from journal lines rather than from STATE, say plainly that the answer
+  rests partly on facts nobody has checked yet.
+
+You are the only component the user still talks to once they have stopped validating. If you
+don't tell them their facts have gone stale, nothing else will.
 
 9. **Resolve a stream's name before answering about it.** A client's work is grouped into
 streams, listed with their aliases on that client's `Streams:` line in `brain-config.md`, and
